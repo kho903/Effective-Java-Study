@@ -1,5 +1,9 @@
 package com.jikim.effectivejava.chap01.item01;
 
+import java.util.Arrays;
+
+import com.jikim.effectivejava.chap01.item01.useenum.OrderStatus;
+
 public class Order {
 
 	private boolean prime;
@@ -8,15 +12,7 @@ public class Order {
 
 	private Product product;
 
-	/*public Order(Product product, boolean urgent) {
-		this.product = product;
-		this.urgent = urgent;
-	}
-
-	public Order(boolean prime, Product product) {
-		this.product = product;
-		this.prime = prime;
-	}*/
+	private OrderStatus orderStatus;
 
 	public static Order primeOrder(Product product) {
 		Order order = new Order();
@@ -30,5 +26,13 @@ public class Order {
 		order.urgent = true;
 		order.product = product;
 		return order;
+	}
+
+	public static void main(String[] args) {
+		Order order = new Order();
+		if (order.orderStatus == OrderStatus.DELIVERED) {
+			System.out.println("delivered");
+		}
+		Arrays.stream(OrderStatus.values()).forEach(System.out::println);
 	}
 }
